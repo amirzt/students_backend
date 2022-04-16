@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from Users.managers import CustomUserManager
 
 Grades = [
-
+    (1, 'دهم'),
 ]
 
 

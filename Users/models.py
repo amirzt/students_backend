@@ -13,9 +13,9 @@ Grades = [
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=50, null=True, blank=False)
-    user_name = models.CharField(max_length=50, null=True, blank=False)
+    user_name = models.CharField(max_length=50, null=True, blank=False, unique=True)
     phone = models.CharField(max_length=11, null=False, blank=False, unique=True)
-    email = models.EmailField(null=True, blank=False)
+    email = models.EmailField(null=True, blank=False, unique=True)
     is_visible = models.BooleanField(default=True)
     date_joint = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=False)

@@ -6,10 +6,6 @@ from datetime import datetime, timedelta
 # Create your models here.
 from Users.managers import CustomUserManager
 
-Grades = [
-    (1, 'دهم'),
-]
-
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=50, null=True, blank=False)
@@ -33,10 +29,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     #     return self.name
 
 
+class Grade(models.Model):
+    title = models.CharField(max_length=30, blank=False)
+
+
 class Student(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
-    grade = models.CharField(choices=Grades, null=False, max_length=20)
+    grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     expire_date = models.DateTimeField(default=datetime.now()+timedelta(days=7))
-
-
 

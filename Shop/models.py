@@ -17,6 +17,6 @@ class Order(models.Model):
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_time = models.DateTimeField(auto_now_add=True)
-    modified_time = models.DateTimeField()
+    modified_time = models.DateTimeField(null=True)
     state = models.BooleanField(default=False)
-    tracking_code = models.CharField(blank=False)
+    tracking_code = models.CharField(blank=False, max_length=100, null=True)

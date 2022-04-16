@@ -13,14 +13,15 @@ from Shop.serializers import PlanSerializer, CreateOrderSerializer, GetOrdersSer
 @permission_classes([AllowAny])
 def get_plans(request):
     plans = Plan.objects.filter(available=True)
-    serializer = PlanSerializer(data=plans)
+    serializer = PlanSerializer(plans, many=True)
     return Response(serializer.data)
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def order(request):
-    serializer = CreateOrderSerializer(data=request.data)
+    serializer = CreateOrderSerializer(data=request.data,
+                                       context={'request': request})
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -32,5 +33,5 @@ def order(request):
 @permission_classes([IsAuthenticated])
 def get_orders(request):
     orders = Order.objects.filter(user=request.user)
-    serializer = GetOrdersSerializer(data=orders)
+    serializer = GetOrdersSerializer(orders, many=True)
     return Response(serializer.data)

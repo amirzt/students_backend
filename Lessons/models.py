@@ -34,7 +34,6 @@ class ScheduleWeek(models.Model):
 class ScheduleItem(models.Model):
     week = models.ForeignKey(ScheduleWeek, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
-    day = models.CharField(choices=DAYS, null=False, max_length=8)
     time = models.IntegerField(default=0)
     question = models.IntegerField(default=0)
     detail = models.TextField(max_length=200, null=True)

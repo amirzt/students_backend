@@ -8,16 +8,6 @@ LESSON_TYPE = [
     ('اختصاصی', 2)
 ]
 
-DAYS = [
-    ('شنبه', 1),
-    ('یکشنبه', 2),
-    ('دوشنبه', 3),
-    ('سه شنبه', 4),
-    ('چهارشنبه', 5),
-    ('پنجشنبه', 6),
-    ('جمعه', 7),
-]
-
 
 class Lesson(models.Model):
     title = models.CharField(max_length=30, null=False, blank=False)
@@ -26,13 +16,7 @@ class Lesson(models.Model):
     icon = models.ImageField(upload_to='./lesson icons')
 
 
-class ScheduleWeek(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    start_date = models.DateField(null=False)
-
-
 class ScheduleItem(models.Model):
-    week = models.ForeignKey(ScheduleWeek, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     time = models.IntegerField(default=0)
     question = models.IntegerField(default=0)

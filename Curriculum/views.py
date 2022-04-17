@@ -74,4 +74,3 @@ def delete(request):
     except CurriculumItem.DoesNotExist:
         return Response({'message': 'item does not exist'})
 
-

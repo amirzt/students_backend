@@ -14,9 +14,8 @@ DAYS = [
 ]
 
 
-class CurriculumItem(models.Model):
+class PersonalPlan(models.Model):
     scheduleItem = models.ForeignKey(ScheduleItem, on_delete=models.CASCADE)
     day = models.CharField(choices=DAYS, max_length=8, null=False)
     week = models.IntegerField(null=False)
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
-

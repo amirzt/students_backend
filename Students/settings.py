@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'Users',
     'Shop',
     'Lessons',
-    'Curriculum'
+    'Curriculum',
+    'PersonalPlan'
 ]
 
 MIDDLEWARE = [

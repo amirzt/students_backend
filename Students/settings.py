@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'Lessons',
     'Curriculum',
     'PersonalPlan',
-    'Friendship'
+    'Friendship',
+    'Calender'
 ]
 
 MIDDLEWARE = [

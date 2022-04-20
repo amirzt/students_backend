@@ -20,7 +20,7 @@ REQUEST_STATES = [
 class SearchAccount(models.Model):
     gender = models.CharField(choices=GENDER, max_length=4)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, unique=True)
 
 
 class Subjects(models.Model):

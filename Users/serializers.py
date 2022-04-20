@@ -22,3 +22,10 @@ class GetUsersInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['name', 'id']
+
+
+class GetStudentSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Student
+        fields = ['user', 'id']

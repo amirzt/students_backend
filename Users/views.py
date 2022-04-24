@@ -113,7 +113,6 @@ def delete_account(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_weeks(request):
-    start_date = Student(user=request.user).start_date
-    start_week = start_date.isocalendar().week
+    start_week = Student(user=request.user).start_date.isocalendar().week
     end_week = datetime.date.today().isocalendar().week
-    week = start_week-end_week
+    return Response({'week': start_week-end_week})

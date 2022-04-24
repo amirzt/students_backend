@@ -23,6 +23,7 @@ urlpatterns = [
     path('api/lessons/', include('Lessons.urls')),
     path('api/curriculum/', include('Curriculum.urls')),
     path('api/personal_plan/', include('PersonalPlan.urls')),
-    path('api/friendship/', include('Friendship.urls'))
+    path('api/friendship/', include('Friendship.urls')),
+    path('api/milestone/', include('Milestone.urls'))
 
 ]

@@ -7,4 +7,4 @@ class GetCurriculumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CurriculumItem
-        fields = ['scheduleItem', 'day', 'week']
+        fields = ['scheduleItem', 'date']

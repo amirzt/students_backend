@@ -19,8 +19,7 @@ def add_personal_plan(request):
     if schedule_serializer.is_valid():
         schedule = schedule_serializer.save()
         plan = PersonalPlan(scheduleItem=schedule,
-                            day=request.POST.get('day'),
-                            week=request.POST.get('week'),
+                            date=request.POST.get('date'),
                             user=request.user)
         plan.save()
         return Response(status=status.HTTP_200_OK)
@@ -31,8 +30,7 @@ def add_personal_plan(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_all_week(request):
-    plans = PersonalPlan.objects.filter(user=request.user,
-                                        week=request.POST.get('week'))
+    plans = PersonalPlan.objects.filter(user=request.user)
     serializers = GetPersonalPlanSerializer(plans, many=True)
     return Response(serializers.data)
 

@@ -7,4 +7,4 @@ class GetPersonalPlanSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PersonalPlan
-        fields = ['scheduleItem', 'day', 'week']
+        fields = ['scheduleItem', 'date']

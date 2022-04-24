@@ -1,8 +1,3 @@
-import logging
-
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -21,8 +16,7 @@ def add_curriculum(request):
     if schedule_serializer.is_valid():
         schedule = schedule_serializer.save()
         curriculum = CurriculumItem(scheduleItem=schedule,
-                                    day=request.POST.get('day'),
-                                    week=request.POST.get('week'),
+                                    date=request.POST.get('date'),
                                     user=request.user)
         curriculum.save()
         return Response(status=status.HTTP_200_OK)
@@ -33,8 +27,7 @@ def add_curriculum(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_all_week(request):
-    curriculum = CurriculumItem.objects.filter(user=request.user,
-                                               week=request.POST.get('week'))
+    curriculum = CurriculumItem.objects.filter(user=request.user)
     serializers = GetCurriculumSerializer(curriculum, many=True)
     return Response(serializers.data)
 
@@ -63,7 +56,7 @@ def get_all_week(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def delete(request):
-    try:
+    try :
         curriculum = CurriculumItem.objects.get(id=request.POST.get('curriculum'))
         if request.user == curriculum.user:
             curriculum.scheduleItem.delete()

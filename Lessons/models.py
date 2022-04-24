@@ -13,7 +13,7 @@ class Lesson(models.Model):
     title = models.CharField(max_length=30, null=False, blank=False)
     types = models.CharField(choices=LESSON_TYPE, max_length=7)
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
-    icon = models.ImageField(upload_to='./lesson icons')
+    icon = models.ImageField(upload_to='./Lessons/lesson icons')
 
 
 class ScheduleItem(models.Model):

@@ -44,4 +44,6 @@ class Student(models.Model):
     grade = models.ForeignKey(Grade, on_delete=models.CASCADE)
     gender = models.CharField(choices=GENDER, default=3, max_length=4)
     expire_date = models.DateTimeField(default=datetime.now()+timedelta(days=7))
+    start_date = models.DateTimeField(auto_now_add=True)
+
 

@@ -1,3 +1,5 @@
+import datetime
+
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
@@ -106,3 +108,12 @@ def delete_account(request):
         return Response({'message': 'account deleted successfully'})
     else:
         return Response({'message': 'password is incorrect'})
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_weeks(request):
+    start_date = Student(user=request.user).start_date
+    start_week = start_date.isocalendar().week
+    end_week = datetime.date.today().isocalendar().week
+    week = start_week-end_week
